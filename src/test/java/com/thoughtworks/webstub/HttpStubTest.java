@@ -33,22 +33,22 @@ public class HttpStubTest {
         stubServer.reset();
     }
 
-    @Test
-    public void shouldStubHttpCalls() {
-        stubServer.get("/accounts/1").returns(response(200).withContent("account details"));
-
-        Response response = httpClient.get("http://localhost:9099/context/accounts/1");
-        assertThat(response.status(), is(200));
-        assertThat(response.content(), is("account details"));
-    }
-
-    @Test
-    public void shouldMatchResponseForRequestsContainingHeaders() {
-        stubServer.get("/accounts/1").withHeader("x", "y").returns(response(200));
-
-        Response response = httpClient.get("http://localhost:9099/context/accounts/1", asList(new BasicHeader("x", "y")));
-        assertThat(response.status(), is(200));
-    }
+//    @Test
+//    public void shouldStubHttpCalls() {
+//        stubServer.get("/accounts/1").returns(response(200).withContent("account details"));
+//
+//        Response response = httpClient.get("http://localhost:9099/context/accounts/1");
+//        assertThat(response.status(), is(200));
+//        assertThat(response.content(), is("account details"));
+//    }
+//
+//    @Test
+//    public void shouldMatchResponseForRequestsContainingHeaders() {
+//        stubServer.get("/accounts/1").withHeader("x", "y").returns(response(200));
+//
+//        Response response = httpClient.get("http://localhost:9099/context/accounts/1", asList(new BasicHeader("x", "y")));
+//        assertThat(response.status(), is(200));
+//    }
 
     @AfterClass
     public static void afterAll() {
